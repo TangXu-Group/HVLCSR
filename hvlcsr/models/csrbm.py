@@ -102,7 +102,8 @@ class CategoryAnalysis(nn.Module):
             torch.full_like(self.scene_cooc, 1.0 / self.c),
         )
 
-        d_score = o_inter - o_intra        
+        #d_score = o_inter - o_intra        
+        d_score = o_intra - o_inter
         d_score = torch.where(valid, d_score, torch.full_like(d_score, -1e4))
         if self.split_zscore:
                                                                     
